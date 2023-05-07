@@ -12,7 +12,7 @@ A simple Discord bot that serves as a soundboard, allowing users to play sounds 
    - Click "Add Bot" and confirm by clicking "Yes, do it!".
    - Under the "Bot" section, click "Copy" to copy your bot token. You will need this token later. If you lose it, you can always generate a new one by clicking "Reset Token".
 
-2. **Clone the repository:**
+2. **Clone the repository or create a fork and then download it:**
 ```
 git clone https://github.com/yourusername/discord-soundbot.git
 cd discord-soundbot
@@ -38,11 +38,11 @@ npm install
 5. **Invite the bot to your server:**
 - In the Discord Developer Portal, go to the "OAuth2" section in your application's sidebar.
 - Scroll down to the "Scopes" section and check the "bot" box.
-- Scroll down to the "Bot Permissions" section and select the appropriate permissions for your bot (e.g., "Send Messages", "Connect", "Speak", etc.).
+- Scroll down to the "Bot Permissions" section and select the appropriate permissions for your bot. Needed are "Read Messages/View Channels", "Send Messages", "Read Message History", "Connect", and "Speak"
 - Copy the generated URL from the "Scopes" section and paste it into your browser.
 - Follow the prompts to invite the bot to your server.
 
-6. **Run the bot:**
+1. **Run the bot:**
 ```
 npm start
 ```
