@@ -9,7 +9,6 @@ const path = require("path");
 
 const soundsDir = "./sounds";
 
-// Outside the execute function, before the module.exports line
 let disconnectTimeout;
 
 module.exports = {
@@ -44,6 +43,10 @@ module.exports = {
         inlineVolume: true,
       });
       resource.volume.setVolume(1.0);
+
+      if (disconnectTimeout) {
+        clearTimeout(disconnectTimeout);
+      }
 
       const player = createAudioPlayer();
       player.play(resource);
