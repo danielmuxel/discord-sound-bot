@@ -5,6 +5,7 @@ const soundsDir = "./sounds";
 
 module.exports = {
   name: "listsounds",
+  description: "List all available sounds in the soundboard",
   async execute(message) {
     fs.readdir(soundsDir, (err, files) => {
       if (err) {
