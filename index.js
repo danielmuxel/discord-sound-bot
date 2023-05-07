@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { Client, GatewayIntentBits, Collection } = require("discord.js");
 const client = new Client({
   intents: [
@@ -9,8 +10,7 @@ const client = new Client({
 });
 
 const fs = require("fs");
-const token =
-  "MTEwNDY4MzU5MTY0NjA3Mjg5NA.GwuR20.qThVkDV0qT6J50y88TxFFFxf_yk_QUKO9FaCCE";
+const token = process.env.BOT_TOKEN;
 const prefix = "!";
 
 // Create a collection to store commands
