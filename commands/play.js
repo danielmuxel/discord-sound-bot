@@ -9,8 +9,12 @@ const path = require("path");
 
 const soundsDir = "./sounds";
 
+// Outside the execute function, before the module.exports line
+let disconnectTimeout;
+
 module.exports = {
   name: "play",
+  description: "Play a sound from the soundboard",
   async execute(message, args) {
     if (!message.member.voice.channel) {
       return message.reply("You need to join a voice channel first!");
@@ -47,7 +51,23 @@ module.exports = {
       connection.subscribe(player);
 
       player.on(AudioPlayerStatus.Idle, () => {
-        connection.destroy();
+        // If there's an existing disconnect timeout, clear it
+        if (disconnectTimeout) {
+          clearTimeout(disconnectTimeout);
+        }
+
+        // Generate a random wait time between 10 and 30 seconds (10000ms to 30000ms)
+        const waitTime = Math.floor(
+          Math.random() * (30000 - 10000 + 1) + 10000
+        );
+
+        // Set a new disconnect timeout
+        disconnectTimeout = setTimeout(() => {
+          // Check if the audio player is still playing when the timeout expires
+          if (player.state.status === AudioPlayerStatus.Idle) {
+            connection.destroy();
+          }
+        }, waitTime);
       });
 
       message.reply(`Playing "${soundName}" in your voice channel.`);
